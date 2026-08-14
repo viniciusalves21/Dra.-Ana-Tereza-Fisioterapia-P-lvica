@@ -1,0 +1,1173 @@
+<!-- ==========================================================================
+  DESENVOLVIDO POR:
+  Vinícius Alves
+  
+  • WhatsApp : +55 (74) 98110-1432
+  • Instagram: @viniciusalves.ig (https://instagram.com/viniciusalves.ig)
+  • Projeto  : Landing Page - Dra. Ana Tereza | Fisioterapia Pélvica
+========================================================================== -->
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dra. Ana Tereza | Fisioterapia Pélvica & Uroginecológica</title>
+  
+  <!-- Fonts Google -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- FontAwesome Ícones -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+  <link rel="icon" type="image/svg+xml" href="assets/favicon-svg.svg">
+
+  <style>
+    :root {
+      --sand-bg: #FAF6F0;
+      --sand-card: #F3ECE2;
+      --terracotta: #B85D43;
+      --terracotta-dark: #964630;
+      --warm-brown: #2D231E;
+      --text-muted: #6B5E57;
+      --white: #FFFFFF;
+      --whatsapp-green: #25D366;
+      --border-color: #E2D7C8;
+      --shadow-soft: 0 10px 30px rgba(45, 35, 30, 0.06);
+      --transition: all 0.3s ease;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background-color: var(--sand-bg);
+      color: var(--warm-brown);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    h1, h2, h3, h4 {
+      font-family: 'Playfair Display', serif;
+      font-weight: 600;
+      line-height: 1.25;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    /* BUTTONS */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 12px 24px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.92rem;
+      letter-spacing: 0.3px;
+      transition: var(--transition);
+      cursor: pointer;
+      border: none;
+      text-align: center;
+    }
+
+    .btn-terracotta {
+      background-color: var(--terracotta);
+      color: var(--white);
+    }
+
+    .btn-terracotta:hover {
+      background-color: var(--terracotta-dark);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(184, 93, 67, 0.2);
+    }
+
+    .btn-outline {
+      border: 1.5px solid var(--warm-brown);
+      color: var(--warm-brown);
+      background: transparent;
+    }
+
+    .btn-outline:hover {
+      background-color: var(--warm-brown);
+      color: var(--white);
+    }
+
+    .section-tag {
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: var(--terracotta);
+      display: block;
+      margin-bottom: 10px;
+    }
+
+    /* HEADER */
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background: rgba(250, 246, 240, 0.96);
+      backdrop-filter: blur(10px);
+      z-index: 1000;
+      border-bottom: 1px solid var(--border-color);
+      padding: 14px 0;
+    }
+
+    .header-flex {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .brand-title {
+      font-size: 1.25rem;
+      color: var(--warm-brown);
+      font-weight: 700;
+    }
+
+    .brand-sub {
+      font-size: 0.65rem;
+      text-transform: uppercase;
+      letter-spacing: 1.2px;
+      color: var(--terracotta);
+    }
+
+    /* DESKTOP NAV */
+    .desktop-nav {
+      display: flex;
+      gap: 32px;
+    }
+
+    .desktop-nav a {
+      font-size: 0.9rem;
+      font-weight: 500;
+      transition: var(--transition);
+    }
+
+    .desktop-nav a:hover {
+      color: var(--terracotta);
+    }
+
+    /* HAMBURGER TOGGLE */
+    .menu-toggle {
+      display: none;
+      background: none;
+      border: none;
+      font-size: 1.4rem;
+      color: var(--warm-brown);
+      cursor: pointer;
+      padding: 6px;
+    }
+
+    /* MOBILE SIDEBAR DRAWER */
+    .drawer-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(45, 35, 30, 0.4);
+      backdrop-filter: blur(4px);
+      z-index: 1998;
+      opacity: 0;
+      visibility: hidden;
+      transition: var(--transition);
+    }
+
+    .drawer-overlay.active {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .mobile-drawer {
+      position: fixed;
+      top: 0;
+      right: -300px;
+      width: 280px;
+      height: 100vh;
+      background-color: var(--sand-bg);
+      z-index: 1999;
+      padding: 30px 24px;
+      box-shadow: -5px 0 25px rgba(0, 0, 0, 0.1);
+      transition: right 0.35s ease;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .mobile-drawer.active {
+      right: 0;
+    }
+
+    .drawer-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 30px;
+      padding-bottom: 15px;
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .drawer-close {
+      background: none;
+      border: none;
+      font-size: 1.4rem;
+      color: var(--warm-brown);
+      cursor: pointer;
+    }
+
+    .drawer-links {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .drawer-links a {
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: var(--warm-brown);
+      transition: var(--transition);
+    }
+
+    .drawer-links a:hover {
+      color: var(--terracotta);
+    }
+
+    /* HERO SECTION */
+    .hero {
+      padding: 130px 0 70px;
+      background: linear-gradient(180deg, var(--sand-bg) 0%, var(--white) 100%);
+    }
+
+    .hero-split {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 50px;
+      align-items: center;
+    }
+
+    .hero-text h1 {
+      font-size: 3.2rem;
+      color: var(--warm-brown);
+      margin-bottom: 20px;
+    }
+
+    .hero-text h1 em {
+      font-style: italic;
+      color: var(--terracotta);
+      font-weight: 400;
+    }
+
+    .hero-text p {
+      font-size: 1.05rem;
+      color: var(--text-muted);
+      margin-bottom: 28px;
+      max-width: 480px;
+    }
+
+    .hero-actions {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .hero-crefito {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-top: 18px;
+      font-weight: 600;
+    }
+
+    .hero-gallery-single {
+      position: relative;
+    }
+
+    .hero-img {
+      width: 100%;
+      max-height: 520px;
+      object-fit: cover;
+      object-position: center top;
+      border-radius: 8px;
+      box-shadow: var(--shadow-soft);
+      display: block;
+    }
+
+    .hero-badge-box {
+      position: absolute;
+      bottom: -20px;
+      right: -20px;
+      background: var(--sand-card);
+      padding: 18px 24px;
+      border-radius: 6px;
+      border: 1px solid var(--border-color);
+      box-shadow: var(--shadow-soft);
+      max-width: 280px;
+    }
+
+    .hero-badge-box h4 {
+      font-size: 1.1rem;
+      color: var(--warm-brown);
+      margin-bottom: 4px;
+    }
+
+    .hero-badge-box p {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    /* STATS BANNER */
+    .stats-banner {
+      background-color: var(--warm-brown);
+      color: var(--sand-bg);
+      padding: 50px 0;
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+      text-align: center;
+    }
+
+    .stat-item {
+      padding: 8px;
+      border-right: 1px solid rgba(226, 215, 200, 0.15);
+    }
+
+    .stat-item:last-child {
+      border-right: none;
+    }
+
+    .stat-item i {
+      font-size: 1.6rem;
+      color: var(--terracotta);
+      margin-bottom: 10px;
+    }
+
+    .stat-item h3 {
+      font-size: 1.1rem;
+      color: var(--sand-bg);
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+
+    .stat-item p {
+      font-size: 0.8rem;
+      color: rgba(250, 246, 240, 0.7);
+    }
+
+    /* SERVICES */
+    .services {
+      padding: 90px 0;
+      background-color: var(--white);
+    }
+
+    .services-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      margin-bottom: 45px;
+    }
+
+    .services-header h2 {
+      font-size: 2.6rem;
+      max-width: 600px;
+    }
+
+    .services-list {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+    }
+
+    .service-box {
+      background-color: var(--sand-bg);
+      padding: 32px;
+      border-radius: 8px;
+      border: 1px solid var(--border-color);
+      transition: var(--transition);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .service-box:hover {
+      border-color: var(--terracotta);
+      box-shadow: var(--shadow-soft);
+      transform: translateY(-4px);
+    }
+
+    .service-box-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.8rem;
+      color: var(--terracotta);
+      margin-bottom: 14px;
+    }
+
+    .service-box h3 {
+      font-size: 1.5rem;
+      color: var(--warm-brown);
+      margin-bottom: 10px;
+    }
+
+    .service-box p {
+      color: var(--text-muted);
+      font-size: 0.92rem;
+      margin-bottom: 24px;
+    }
+
+    /* RESULTADOS / CASOS CLINICOS (SEM CORTES) */
+    .results-section {
+      padding: 80px 0;
+      background-color: var(--sand-bg);
+      border-top: 1px solid var(--border-color);
+    }
+
+    .results-header {
+      text-align: center;
+      margin-bottom: 45px;
+    }
+
+    .results-header h2 {
+      font-size: 2.6rem;
+      color: var(--warm-brown);
+    }
+
+    .results-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 30px;
+      align-items: start;
+    }
+
+    .result-card {
+      background: var(--white);
+      border-radius: 8px;
+      overflow: hidden;
+      border: 1px solid var(--border-color);
+      box-shadow: var(--shadow-soft);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .result-card-img-wrapper {
+      width: 100%;
+      background-color: var(--sand-card);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 8px;
+    }
+
+    .result-card img {
+      width: 100%;
+      height: auto;
+      max-height: 550px;
+      object-fit: contain;
+      border-radius: 4px;
+      display: block;
+    }
+
+    .result-card-body {
+      padding: 24px 20px;
+      text-align: center;
+      background: var(--white);
+      border-top: 1px solid rgba(226, 215, 200, 0.4);
+    }
+
+    .result-card-body h3 {
+      font-size: 1.4rem;
+      color: var(--warm-brown);
+      margin-bottom: 6px;
+    }
+
+    .result-card-body p {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    /* ABOUT */
+    .about {
+      padding: 90px 0;
+      background-color: var(--white);
+      border-top: 1px solid var(--border-color);
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 0.9fr 1.1fr;
+      gap: 50px;
+      align-items: center;
+    }
+
+    .about-main-img {
+      width: 100%;
+      max-height: 520px;
+      object-fit: cover;
+      object-position: center top;
+      border-radius: 8px;
+      box-shadow: var(--shadow-soft);
+      display: block;
+    }
+
+    .about-content h2 {
+      font-size: 2.8rem;
+      margin-bottom: 20px;
+      color: var(--warm-brown);
+    }
+
+    .about-content p {
+      color: var(--text-muted);
+      font-size: 0.98rem;
+      margin-bottom: 16px;
+    }
+
+    .about-bullets {
+      list-style: none;
+      margin: 24px 0 32px;
+    }
+
+    .about-bullets li {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 0.95rem;
+      font-weight: 600;
+      margin-bottom: 12px;
+      color: var(--warm-brown);
+    }
+
+    .about-bullets i {
+      color: var(--terracotta);
+      font-size: 1.1rem;
+    }
+
+    /* PROCESS TIMELINE */
+    .process {
+      padding: 90px 0;
+      background-color: var(--sand-bg);
+      border-top: 1px solid var(--border-color);
+    }
+
+    .process-title {
+      text-align: center;
+      margin-bottom: 50px;
+    }
+
+    .process-title h2 {
+      font-size: 2.6rem;
+    }
+
+    .timeline-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .timeline-card {
+      background-color: var(--sand-card);
+      padding: 30px 24px;
+      border-radius: 8px;
+      border-top: 4px solid var(--terracotta);
+    }
+
+    .timeline-step {
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      color: var(--terracotta);
+      text-transform: uppercase;
+      margin-bottom: 10px;
+      display: block;
+    }
+
+    .timeline-card h3 {
+      font-size: 1.4rem;
+      margin-bottom: 10px;
+      color: var(--warm-brown);
+    }
+
+    .timeline-card p {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    /* TESTIMONIALS */
+    .testimonials {
+      padding: 90px 0;
+      background-color: var(--white);
+      border-top: 1px solid var(--border-color);
+    }
+
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-top: 40px;
+    }
+
+    .testimonial-box {
+      background: var(--sand-bg);
+      padding: 28px;
+      border-radius: 8px;
+      border: 1px solid var(--border-color);
+      box-shadow: var(--shadow-soft);
+    }
+
+    .testimonial-quote {
+      font-style: italic;
+      color: var(--warm-brown);
+      font-size: 0.92rem;
+      margin-bottom: 18px;
+    }
+
+    .testimonial-stars {
+      color: var(--terracotta);
+      font-size: 0.8rem;
+    }
+
+    /* CTA BANNER */
+    .cta-banner {
+      background-color: var(--warm-brown);
+      color: var(--sand-bg);
+      padding: 80px 0;
+      text-align: center;
+    }
+
+    .cta-banner h2 {
+      font-size: 2.8rem;
+      color: var(--sand-bg);
+      margin-bottom: 16px;
+    }
+
+    .cta-banner p {
+      font-size: 1rem;
+      color: rgba(250, 246, 240, 0.8);
+      max-width: 540px;
+      margin: 0 auto 30px;
+    }
+
+    /* FOOTER */
+    footer {
+      background-color: #1F1714;
+      color: rgba(250, 246, 240, 0.6);
+      padding: 40px 0 25px;
+      font-size: 0.85rem;
+    }
+
+    .footer-flex {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+
+    .footer-brand h3 {
+      color: var(--sand-bg);
+      font-size: 1.25rem;
+    }
+
+    /* WHATSAPP FLOAT BUTTON */
+    .whatsapp-float {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      background-color: var(--whatsapp-green);
+      color: var(--white);
+      padding: 12px 20px;
+      border-radius: 50px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 700;
+      font-size: 0.95rem;
+      box-shadow: 0 8px 20px rgba(37, 211, 102, 0.35);
+      z-index: 999;
+      transition: var(--transition);
+    }
+
+    .whatsapp-float:hover {
+      transform: scale(1.05);
+      background-color: #20ba5a;
+    }
+
+    /* RESPONSIVIDADE MOBILE & TABLET */
+    @media (max-width: 992px) {
+      .desktop-nav, .header-cta {
+        display: none;
+      }
+
+      .menu-toggle {
+        display: block;
+      }
+
+      .hero {
+        padding: 95px 0 50px;
+      }
+
+      .hero-split {
+        grid-template-columns: 1fr;
+        gap: 24px;
+      }
+
+      .hero-text {
+        text-align: center;
+      }
+
+      .hero-text h1 {
+        font-size: 2.2rem;
+        margin-bottom: 12px;
+      }
+
+      .hero-text p {
+        font-size: 0.95rem;
+        margin: 0 auto 20px;
+      }
+
+      .hero-gallery-single {
+        order: 2;
+        margin-top: 10px;
+      }
+
+      .hero-actions {
+        order: 3;
+        justify-content: center;
+        margin-top: 20px;
+      }
+
+      .hero-badge-box {
+        position: relative;
+        bottom: 0;
+        right: 0;
+        margin-top: -25px;
+        margin-left: auto;
+        margin-right: auto;
+        max-width: 90%;
+        text-align: center;
+      }
+
+      .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+      }
+
+      .stat-item:nth-child(2) {
+        border-right: none;
+      }
+
+      .services-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 16px;
+      }
+
+      .services-list, .results-grid, .timeline-grid, .testimonials-grid, .about-grid {
+        grid-template-columns: 1fr;
+        gap: 24px;
+      }
+
+      .cta-banner h2 {
+        font-size: 2.2rem;
+      }
+
+      .footer-flex {
+        flex-direction: column;
+        gap: 16px;
+        text-align: center;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .btn {
+        width: 100%;
+        padding: 14px 20px;
+      }
+
+      .stats-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .stat-item {
+        border-right: none;
+        border-bottom: 1px solid rgba(226, 215, 200, 0.15);
+        padding-bottom: 14px;
+      }
+
+      .whatsapp-float span {
+        display: none;
+      }
+
+      .whatsapp-float {
+        padding: 14px;
+        border-radius: 50%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER COM MENU RETRÁTIL -->
+  <header>
+    <div class="container header-flex">
+      <div>
+        <div class="brand-title">Dra. Ana Tereza</div>
+        <div class="brand-sub">Fisioterapia Pélvica & Uroginecológica</div>
+      </div>
+
+      <!-- Links Desktop -->
+      <nav class="desktop-nav">
+        <a href="#especialidades">Especialidades</a>
+        <a href="#resultados">Resultados</a>
+        <a href="#sobre">Sobre a Médica</a>
+        <a href="#processo">Como Funciona</a>
+        <a href="#depoimentos">Depoimentos</a>
+      </nav>
+
+      <a href="https://wa.me/5575982596600?text=Olá!%20Gostaria%20de%20agendar%20uma%20avaliação%20com%20a%20Dra.%20Ana%20Tereza." target="_blank" class="btn btn-terracotta header-cta">
+        Agendar Consulta
+      </a>
+
+      <!-- Botão Hambúrguer Mobile -->
+      <button class="menu-toggle" id="menuToggle" aria-label="Abrir Menu">
+        <i class="fa-solid fa-bars"></i>
+      </button>
+    </div>
+  </header>
+
+  <!-- OVERLAY E MENU GAVETA MOBILE -->
+  <div class="drawer-overlay" id="drawerOverlay"></div>
+  <aside class="mobile-drawer" id="mobileDrawer">
+    <div>
+      <div class="drawer-header">
+        <div>
+          <div class="brand-title" style="font-size: 1.15rem;">Dra. Ana Tereza</div>
+          <div class="brand-sub">Saúde Íntima & Pélvica</div>
+        </div>
+        <button class="drawer-close" id="drawerClose" aria-label="Fechar Menu">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+      <nav class="drawer-links">
+        <a href="#especialidades" class="drawer-item">Especialidades</a>
+        <a href="#resultados" class="drawer-item">Resultados</a>
+        <a href="#sobre" class="drawer-item">Sobre a Médica</a>
+        <a href="#processo" class="drawer-item">Como Funciona</a>
+        <a href="#depoimentos" class="drawer-item">Depoimentos</a>
+      </nav>
+    </div>
+    <div>
+      <a href="https://wa.me/5575982596600?text=Olá!%20Gostaria%20de%20agendar%20uma%20avaliação." target="_blank" class="btn btn-terracotta" style="width: 100%;">
+        <i class="fa-brands fa-whatsapp"></i> Agendar Consulta
+      </a>
+    </div>
+  </aside>
+
+  <!-- HERO SECTION -->
+  <section class="hero">
+    <div class="container hero-split">
+      <div class="hero-text">
+        <span class="section-tag">Saúde Íntima & Reabilitação</span>
+        <h1>Cuidado especialista para devolver sua <em>qualidade de vida</em>.</h1>
+        <p>Atendimento humanizado focado em saúde íntima feminina e masculina, reabilitação de diástase e tratamento especializado em endometriose.</p>
+        
+        <div class="hero-actions">
+          <a href="https://wa.me/5575982596600?text=Olá!%20Gostaria%20de%20agendar%20uma%20avaliação." target="_blank" class="btn btn-terracotta">
+            <i class="fa-brands fa-whatsapp"></i> Agendar Avaliação
+          </a>
+        </div>
+        <div class="hero-crefito">CREFITO BA | 279014-F</div>
+      </div>
+
+      <div class="hero-gallery-single">
+        <img src="assets/foto do topo.png" alt="Dra. Ana Tereza" class="hero-img" />
+        <div class="hero-badge-box">
+          <h4>Atendimento Individual</h4>
+          <p>Tratamentos baseados em evidências científicas e acolhimento singular.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STATS BANNER -->
+  <section class="stats-banner">
+    <div class="container stats-grid">
+      <div class="stat-item">
+        <i class="fa-solid fa-venus-mars"></i>
+        <h3>Saúde Íntima</h3>
+        <p>Feminina & Masculina</p>
+      </div>
+      <div class="stat-item">
+        <i class="fa-solid fa-person-dots-from-line"></i>
+        <h3>Diástase</h3>
+        <p>Reabilitação Abdominal</p>
+      </div>
+      <div class="stat-item">
+        <i class="fa-solid fa-notes-medical"></i>
+        <h3>Endometriose</h3>
+        <p>Alívio da Dor Crônica</p>
+      </div>
+      <div class="stat-item">
+        <i class="fa-solid fa-hand-holding-heart"></i>
+        <h3>Acolhimento</h3>
+        <p>Atendimento Humanizado</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ESPECIALIDADES -->
+  <section class="services" id="especialidades">
+    <div class="container">
+      <div class="services-header">
+        <div>
+          <span class="section-tag">Áreas de Atuação</span>
+          <h2>Tratamentos Personalizados</h2>
+        </div>
+        <a href="https://wa.me/5575982596600?text=Gostaria%20de%20saber%20mais%20sobre%20os%20tratamentos" target="_blank" class="btn btn-outline">Tirar Dúvidas</a>
+      </div>
+
+      <div class="services-list">
+        <div class="service-box">
+          <div>
+            <div class="service-box-num">01</div>
+            <h3>Fisioterapia Pélvica & Uroginecológica</h3>
+            <p>Tratamento preventivo e reabilitativo para incontinência urinária, dores na relação íntima, prolapsos e disfunções do assoalho pélvico feminino e masculino.</p>
+          </div>
+          <a href="https://wa.me/5575982596600?text=Quero%20agendar%20Fisioterapia%20Pélvica" target="_blank" class="btn btn-terracotta">Agendar Consulta</a>
+        </div>
+
+        <div class="service-box">
+          <div>
+            <div class="service-box-num">02</div>
+            <h3>Reabilitação de Diástase</h3>
+            <p>Protocolos focados no fortalecimento do core e recuperação da parede abdominal, restaurando a estética funcional, postura e estabilidade da coluna.</p>
+          </div>
+          <a href="https://wa.me/5575982596600?text=Quero%20agendar%20Tratamento%20de%20Diástase" target="_blank" class="btn btn-terracotta">Agendar Consulta</a>
+        </div>
+
+        <div class="service-box">
+          <div>
+            <div class="service-box-num">03</div>
+            <h3>Manejo de Endometriose</h3>
+            <p>Abordagem fisioterapêutica para alívio das dores pélvicas profundas, liberação de aderências teciduais e restauração da mobilidade das estruturas viscerais.</p>
+          </div>
+          <a href="https://wa.me/5575982596600?text=Quero%20agendar%20Tratamento%20para%20Endometriose" target="_blank" class="btn btn-terracotta">Agendar Consulta</a>
+        </div>
+
+        <div class="service-box">
+          <div>
+            <div class="service-box-num">04</div>
+            <h3>Saúde Íntima Masculina</h3>
+            <p>Acompanhamento especializado para reabilitação pós-prostatectomia, disfunções miccionais e dores pélvicas crônicas no homem.</p>
+          </div>
+          <a href="https://wa.me/5575982596600?text=Quero%20agendar%20Consulta%20Masculina" target="_blank" class="btn btn-terracotta">Agendar Consulta</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- RESULTADOS (SEM CORTES) -->
+  <section class="results-section" id="resultados">
+    <div class="container">
+      <div class="results-header">
+        <span class="section-tag">Transformações Reais</span>
+        <h2>Resultados no Tratamento de Diástase</h2>
+      </div>
+
+      <div class="results-grid">
+        <div class="result-card">
+          <div class="result-card-img-wrapper">
+            <img src="assets/resultado1.jpeg" alt="Antes e Depois Diástase - Dra Ana Tereza">
+          </div>
+          <div class="result-card-body">
+            <h3>Recuperação Pós-Parto</h3>
+            <p>Fechamento e reabilitação funcional da diástase abdominal com protocolo exclusivo.</p>
+          </div>
+        </div>
+
+        <div class="result-card">
+          <div class="result-card-img-wrapper">
+            <img src="assets/resultado2.jpeg" alt="Caso Clínico Diástase - Dra Ana Tereza">
+          </div>
+          <div class="result-card-body">
+            <h3>Restauração do Tônus Abdominal</h3>
+            <p>Evolução visível no tônus, postura e redução da flacidez tissular.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SOBRE -->
+  <section class="about" id="sobre">
+    <div class="container about-grid">
+      <div>
+        <img src="assets/dra-ana-tereza.jpeg" alt="Dra. Ana Tereza no Consultório" class="about-main-img">
+      </div>
+      <div class="about-content">
+        <span class="section-tag">A Profissional</span>
+        <h2>Dra. Ana Tereza</h2>
+        <p>Especialista em Fisioterapia Pélvica e Uroginecológica, atuo com foco na saúde íntima de homens e mulheres há oito anos. Meu compromisso é oferecer um espaço seguro, ético e técnico para a resolução de desconfortos que afetam diretamente o seu bem-estar diário.</p>
+        <p>Acredito em uma ciência humanizada, onde a escuta atenta e o diagnóstico preciso antecedem qualquer protocolo terapêutico.</p>
+        
+        <ul class="about-bullets">
+          <li><i class="fa-solid fa-circle-check"></i> CREFITO BA | 279014-F</li>
+          <li><i class="fa-solid fa-circle-check"></i> Atendimento 100% individual e privativo</li>
+          <li><i class="fa-solid fa-circle-check"></i> Condutas embasadas em evidências científicas</li>
+        </ul>
+
+        <a href="https://instagram.com/dra.anaterezza" target="_blank" class="btn btn-outline">
+          <i class="fa-brands fa-instagram"></i> Acompanhe no Instagram
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- COMO FUNCIONA -->
+  <section class="process" id="processo">
+    <div class="container">
+      <div class="process-title">
+        <span class="section-tag">Jornada do Paciente</span>
+        <h2>Como Funciona a Sua Consulta</h2>
+      </div>
+
+      <div class="timeline-grid">
+        <div class="timeline-card">
+          <span class="timeline-step">Etapa 01</span>
+          <h3>Agendamento Fácil</h3>
+          <p>Entre em contato pelo WhatsApp. Nossa equipe entenderá brevemente sua necessidade e reservará o melhor horário para você.</p>
+        </div>
+
+        <div class="timeline-card">
+          <span class="timeline-step">Etapa 02</span>
+          <h3>Avaliação Pélvica Minuciosa</h3>
+          <p>Na primeira consulta, realizamos uma anamnese detalhada para avaliar histórico de saúde, hábitos de vida e exame físico funcional.</p>
+        </div>
+
+        <div class="timeline-card">
+          <span class="timeline-step">Etapa 03</span>
+          <h3>Tratamento Direcionado</h3>
+          <p>Início do plano terapêutico personalizado com técnicas manuais, recursos tecnológicos e orientações de exercícios para casa.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DEPOIMENTOS -->
+  <section class="testimonials" id="depoimentos">
+    <div class="container">
+      <div style="text-align: center;">
+        <span class="section-tag">Relatos</span>
+        <h2>O Que Dizem Nossos Pacientes</h2>
+      </div>
+
+      <div class="testimonials-grid">
+        <div class="testimonial-box">
+          <p class="testimonial-quote">"O tratamento com a Dra. Ana Tereza mudou totalmente a minha relação com o meu corpo após a gravidez. Minha diástase recuperou incrivelmente!"</p>
+          <div class="testimonial-stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+        </div>
+
+        <div class="testimonial-box">
+          <p class="testimonial-quote">"Quem sofre com dor de endometriose sabe o quanto é difícil. A fisioterapia pélvica foi o divisor de águas no meu tratamento."</p>
+          <div class="testimonial-stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+        </div>
+
+        <div class="testimonial-box">
+          <p class="testimonial-quote">"Atendimento impecável, muito profissionalismo e um ambiente super discreto e acolhedor. Recomendo a todos!"</p>
+          <div class="testimonial-stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BANNER CTA FINAL -->
+  <section class="cta-banner">
+    <div class="container">
+      <h2>Pronta para cuidar da sua saúde íntima?</h2>
+      <p>Agende uma avaliação e dê o primeiro passo para uma vida com mais conforto, bem-estar e sem dores.</p>
+      <a href="https://wa.me/5575982596600?text=Olá!%20Quero%20agendar%20uma%20consulta%20com%20a%20Dra.%20Ana%20Tereza." target="_blank" class="btn btn-terracotta">
+        <i class="fa-brands fa-whatsapp"></i> Agendar pelo WhatsApp
+      </a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <div class="footer-flex">
+        <div class="footer-brand">
+          <h3>Dra. Ana Tereza</h3>
+          <p>Fisioterapeuta Pélvica e Uroginecológica — CREFITO BA | 279014-F</p>
+        </div>
+        <div>
+          <a href="https://instagram.com/dra.anaterezza" target="_blank" style="color: var(--sand-bg);"><i class="fa-brands fa-instagram"></i> @dra.anaterezza</a>
+        </div>
+      </div>
+      Desenvolvido por <a href="https://instagram.com/viniciusalves.ig" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: underline;">Vinícius Alves</a>
+</p>
+      <p style="text-align: center;">&copy; Todos os direitos reservados.</p>
+      <p style="margin-top: 15px; font-size: 0.75rem; opacity: 0.7;">
+    </div>
+  </footer>
+
+  <!-- BOTÃO FLUTUANTE WHATSAPP -->
+  <a href="https://wa.me/5575982596600?text=Olá!%20Vim%20pelo%20site%20e%20gostaria%20de%20mais%20informações." target="_blank" class="whatsapp-float">
+    <i class="fa-brands fa-whatsapp"></i>
+    <span>Falar no WhatsApp</span>
+  </a>
+
+  <!-- SCRIPT PARA O MENU RETRÁTIL -->
+  <script>
+    const menuToggle = document.getElementById('menuToggle');
+    const mobileDrawer = document.getElementById('mobileDrawer');
+    const drawerOverlay = document.getElementById('drawerOverlay');
+    const drawerClose = document.getElementById('drawerClose');
+    const drawerItems = document.querySelectorAll('.drawer-item');
+
+    function openMenu() {
+      mobileDrawer.classList.add('active');
+      drawerOverlay.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeMenu() {
+      mobileDrawer.classList.remove('active');
+      drawerOverlay.classList.remove('active');
+      document.body.style.overflow = 'auto';
+    }
+
+    menuToggle.addEventListener('click', openMenu);
+    drawerClose.addEventListener('click', closeMenu);
+    drawerOverlay.addEventListener('click', closeMenu);
+
+    drawerItems.forEach(item => {
+      item.addEventListener('click', closeMenu);
+    });
+  </script>
+
+</body>
+</html>
