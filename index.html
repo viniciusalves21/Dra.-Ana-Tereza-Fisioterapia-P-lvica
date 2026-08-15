@@ -458,13 +458,12 @@
       color: var(--warm-brown);
     }
 
-    .results-grid {
+   .results-grid {
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 30px;
-      align-items: start;
-    }
-
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      align-items: stretch;
+}
     .result-card {
       background: var(--white);
       border-radius: 8px;
@@ -990,37 +989,50 @@
     </div>
   </section>
 
-  <!-- RESULTADOS (SEM CORTES) -->
-  <section class="results-section" id="resultados">
-    <div class="container">
-      <div class="results-header">
-        <span class="section-tag">Transformações Reais</span>
-        <h2>Resultados no Tratamento de Diástase</h2>
+  <!-- RESULTADOS -->
+<section class="results-section" id="resultados">
+  <div class="container">
+    <div class="results-header">
+      <span class="section-tag">Transformações Reais</span>
+      <h2>Resultados no Tratamento de Diástase</h2>
+    </div>
+
+    <div class="results-grid">
+      <!-- CARD 1 -->
+      <div class="result-card">
+        <div class="result-card-img-wrapper">
+          <img src="assets/resultado3.jpeg" alt="Antes e Depois Diástase - Dra Ana Tereza">
+        </div>
+        <div class="result-card-body">
+          <h3>Fechamento de Diástase</h3>
+          <p>Tratamento personalizado com fortalecimento profundo da musculatura abdominal.</p>
+        </div>
       </div>
 
-      <div class="results-grid">
-        <div class="result-card">
-          <div class="result-card-img-wrapper">
-            <img src="assets/resultado1.jpeg" alt="Antes e Depois Diástase - Dra Ana Tereza">
-          </div>
-          <div class="result-card-body">
-            <h3>Recuperação Pós-Parto</h3>
-            <p>Fechamento e reabilitação funcional da diástase abdominal com protocolo exclusivo.</p>
-          </div>
+      <!-- CARD 2 -->
+      <div class="result-card">
+        <div class="result-card-img-wrapper">
+          <img src="assets/resultado1.jpeg" alt="Antes e Depois Diástase - Dra Ana Tereza">
         </div>
+        <div class="result-card-body">
+          <h3>Recuperação Pós-Parto</h3>
+          <p>Fechamento e reabilitação funcional da diástase abdominal com protocolo exclusivo.</p>
+        </div>
+      </div>
 
-        <div class="result-card">
-          <div class="result-card-img-wrapper">
-            <img src="assets/resultado2.jpeg" alt="Caso Clínico Diástase - Dra Ana Tereza">
-          </div>
-          <div class="result-card-body">
-            <h3>Restauração do Tônus Abdominal</h3>
-            <p>Evolução visível no tônus e postura.</p>
-          </div>
+      <!-- CARD 3 -->
+      <div class="result-card">
+        <div class="result-card-img-wrapper">
+          <img src="assets/resultado2.jpeg" alt="Caso Clínico Diástase - Dra Ana Tereza">
+        </div>
+        <div class="result-card-body">
+          <h3>Restauração do Tônus Abdominal</h3>
+          <p>Evolução visível no tônus e postura.</p>
         </div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
   <!-- SOBRE -->
   <section class="about" id="sobre">
